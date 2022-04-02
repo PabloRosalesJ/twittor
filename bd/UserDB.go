@@ -13,7 +13,7 @@ func StoreUser(u models.User) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
-	db := MongoConnection.Database("twitor")
+	db := MongoConnection.Database("twittor")
 	collection := db.Collection("users")
 
 	u.Password, _ = BcryptPwd(u.Password)
@@ -31,7 +31,7 @@ func ExistUser(email string) (models.User, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
-	db := MongoConnection.Database("twitor")
+	db := MongoConnection.Database("twittor")
 	collection := db.Collection("users")
 
 	where := bson.M{"email": email}
