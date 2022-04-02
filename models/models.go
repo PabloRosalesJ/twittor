@@ -18,3 +18,7 @@ type User struct {
 	Bio       string             `bson:"bio" json:"bio,omitempty"`
 	Web       string             `bson:"web" json:"web,omitempty"`
 }
+
+type LoginResponse struct {
+	Token string `json:"token,omitempty"`
+}
