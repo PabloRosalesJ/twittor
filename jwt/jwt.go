@@ -7,8 +7,9 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+var Secret = []byte("DBBalLzY1zc11N4SC6MD")
+
 func GenerateJWT(m models.User) (string, error) {
-	secret := []byte("DBBalLzY1zc11N4SC6MD")
 
 	payload := jwt.MapClaims{
 		"email":     m.Email,
@@ -21,7 +22,7 @@ func GenerateJWT(m models.User) (string, error) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
-	tokenStr, err := token.SignedString(secret)
+	tokenStr, err := token.SignedString(Secret)
 	if err != nil {
 		return tokenStr, err
 	}
